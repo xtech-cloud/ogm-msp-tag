@@ -18,7 +18,7 @@ service Collection
     // 搜索标签
     rpc SearchTag(SearchTagRequest) returns (SearchTagResponse) {}
     // 智能提示关键字
-    rpc SuggestKeyword(SuggestKeywordRequest) returns (SuggestKeywordResponse) {}
+    rpc SuggestFilter(SuggestFilterRequest) returns (SuggestFilterResponse) {}
     // 替换关键字
     // 为包含指定关键字的所有标签替换新的关键字
     rpc ReplaceKeyword(ReplaceKeywordRequest) returns (BlankResponse) {}
@@ -72,9 +72,9 @@ message ListTagResponse
 // 搜索标签的请求
 message SearchTagRequest
 {
-    string keyword = 1; // 关键字
-    int64 offset = 2;   // 偏移值
-    int64 count = 3;    // 数量
+    string filter = 1; // 过滤器
+    int64 offset = 2;  // 偏移值
+    int64 count = 3;   // 数量
 }
 
 // 搜索标签的回复
@@ -86,16 +86,16 @@ message SearchTagResponse
 }
 
 // 智能提示关键字的请求
-message SuggestKeywordRequest
+message SuggestFilterRequest
 {
     string input = 1; // 输入
 }
 
-// 智能提示关键字的回复
-message SuggestKeywordResponse
+// 智能提示过滤器的回复
+message SuggestFilterResponse
 {
-    Status status = 1;           // 状态
-    repeated string keyword = 2; //  关键字列表
+    Status status = 1;          // 状态
+    repeated string filter = 2; //  过滤器列表
 }
 
 // 替换关键字的请求
