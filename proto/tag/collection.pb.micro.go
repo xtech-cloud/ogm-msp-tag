@@ -45,7 +45,7 @@ type CollectionService interface {
 	// 搜索标签
 	SearchTag(ctx context.Context, in *SearchTagRequest, opts ...client.CallOption) (*SearchTagResponse, error)
 	// 智能提示关键字
-	SuggestKeyword(ctx context.Context, in *SuggestKeywordRequest, opts ...client.CallOption) (*SuggestKeywordResponse, error)
+	SuggestFilter(ctx context.Context, in *SuggestFilterRequest, opts ...client.CallOption) (*SuggestFilterResponse, error)
 	// 替换关键字
 	// 为包含指定关键字的所有标签替换新的关键字
 	ReplaceKeyword(ctx context.Context, in *ReplaceKeywordRequest, opts ...client.CallOption) (*BlankResponse, error)
@@ -118,9 +118,9 @@ func (c *collectionService) SearchTag(ctx context.Context, in *SearchTagRequest,
 	return out, nil
 }
 
-func (c *collectionService) SuggestKeyword(ctx context.Context, in *SuggestKeywordRequest, opts ...client.CallOption) (*SuggestKeywordResponse, error) {
-	req := c.c.NewRequest(c.name, "Collection.SuggestKeyword", in)
-	out := new(SuggestKeywordResponse)
+func (c *collectionService) SuggestFilter(ctx context.Context, in *SuggestFilterRequest, opts ...client.CallOption) (*SuggestFilterResponse, error) {
+	req := c.c.NewRequest(c.name, "Collection.SuggestFilter", in)
+	out := new(SuggestFilterResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -172,7 +172,7 @@ type CollectionHandler interface {
 	// 搜索标签
 	SearchTag(context.Context, *SearchTagRequest, *SearchTagResponse) error
 	// 智能提示关键字
-	SuggestKeyword(context.Context, *SuggestKeywordRequest, *SuggestKeywordResponse) error
+	SuggestFilter(context.Context, *SuggestFilterRequest, *SuggestFilterResponse) error
 	// 替换关键字
 	// 为包含指定关键字的所有标签替换新的关键字
 	ReplaceKeyword(context.Context, *ReplaceKeywordRequest, *BlankResponse) error
@@ -190,7 +190,7 @@ func RegisterCollectionHandler(s server.Server, hdlr CollectionHandler, opts ...
 		UpdateTag(ctx context.Context, in *UpdateTagRequest, out *BlankResponse) error
 		ListTag(ctx context.Context, in *ListTagRequest, out *ListTagResponse) error
 		SearchTag(ctx context.Context, in *SearchTagRequest, out *SearchTagResponse) error
-		SuggestKeyword(ctx context.Context, in *SuggestKeywordRequest, out *SuggestKeywordResponse) error
+		SuggestFilter(ctx context.Context, in *SuggestFilterRequest, out *SuggestFilterResponse) error
 		ReplaceKeyword(ctx context.Context, in *ReplaceKeywordRequest, out *BlankResponse) error
 		ExtendKeyword(ctx context.Context, in *ExtendKeywordRequest, out *BlankResponse) error
 		MergeJson(ctx context.Context, in *MergeJsonRequest, out *BlankResponse) error
@@ -226,8 +226,8 @@ func (h *collectionHandler) SearchTag(ctx context.Context, in *SearchTagRequest,
 	return h.CollectionHandler.SearchTag(ctx, in, out)
 }
 
-func (h *collectionHandler) SuggestKeyword(ctx context.Context, in *SuggestKeywordRequest, out *SuggestKeywordResponse) error {
-	return h.CollectionHandler.SuggestKeyword(ctx, in, out)
+func (h *collectionHandler) SuggestFilter(ctx context.Context, in *SuggestFilterRequest, out *SuggestFilterResponse) error {
+	return h.CollectionHandler.SuggestFilter(ctx, in, out)
 }
 
 func (h *collectionHandler) ReplaceKeyword(ctx context.Context, in *ReplaceKeywordRequest, out *BlankResponse) error {
