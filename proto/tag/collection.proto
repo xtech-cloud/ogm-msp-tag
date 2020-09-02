@@ -88,7 +88,7 @@ message SearchTagResponse
 // 智能提示关键字的请求
 message SuggestKeywordRequest
 {
-    string keyword = 1; // 关键字
+    string input = 1; // 输入
 }
 
 // 智能提示关键字的回复
