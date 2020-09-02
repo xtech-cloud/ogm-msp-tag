@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package tag;
+
+// 状态
+message Status
+{
+    int32 code = 1;     // 状态码
+    string message = 2; // 状态信息
+}
+
+// 空白回复
+message BlankResponse
+{
+    Status status = 1; // 状态
+}
+
+enum ExtendMode {
+    INVALID = 0; // 无效
+    AND = 1;     // 与, 交集
+    OR = 2;      // 或, 并集
+}
+
+// 标签实体
+message TagEntity
+{
+    string code = 1;               // 编号
+    string name = 2;               // 标签名称
+    int64 flag = 3;                // 标志
+    map<string, string> alias = 4; // 国际化的名称
+    repeated string keyword = 5;   // 关键字
+}

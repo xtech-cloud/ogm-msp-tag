@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+import "proto/tag/shared.proto";
+
+package tag;
+
+// 标签集合
+service Collection
+{
+    // 添加标签
+    rpc AddTag(AddTagRequest) returns (BlankResponse) {}
+    // 删除标签
+    rpc RemoveTag(RemoveTagRequest) returns (BlankResponse) {}
+    // 更新标签
+    rpc UpdateTag(UpdateTagRequest) returns (BlankResponse) {}
+    // 列举标签
+    rpc ListTag(ListTagRequest) returns (ListTagResponse) {}
+    // 搜索标签
+    rpc SearchTag(SearchTagRequest) returns (SearchTagResponse) {}
+    // 智能提示关键字
+    rpc SuggestKeyword(SuggestKeywordRequest) returns (SuggestKeywordResponse) {}
+    // 替换关键字
+    // 为包含指定关键字的所有标签替换新的关键字
+    rpc ReplaceKeyword(ReplaceKeywordRequest) returns (BlankResponse) {}
+    // 扩展关键字
+    // 为包含指定关键字的所有标签追加新的关键字
+    rpc ExtendKeyword(ExtendKeywordRequest) returns (BlankResponse) {}
+    // 合并Json格式数据
+    rpc MergeJson(MergeJsonRequest) returns (BlankResponse) {}
+}
+
+// 添加标签的请求
+message AddTagRequest
+{
+    string code = 1;  // 编号
+    string name = 2;  // 名称
+    int64 flag = 3;   // 标志
+    string alias = 4; // 别名(en_US)
+}
+
+// 删除标签的请求
+message RemoveTagRequest
+{
+    string code = 1; // 编号
+}
+
+// 更新标签的请求
+message UpdateTagRequest
+{
+    string code = 1;               // 编号
+    string name = 2;               // 标签名称
+    int64 flag = 3;                // 标志
+    map<string, string> alias = 4; // 国际化的名称
+    repeated string keyword = 5;   // 关键字
+}
+
+// 列举标签的请求
+message ListTagRequest
+{
+    int64 offset = 1; // 偏移值
+    int64 count = 2;  // 数量
+}
+
+// 列举标签的回复
+message ListTagResponse
+{
+    Status status = 1;          // 状态
+    int64 total = 2;            // 总数
+    repeated TagEntity tag = 3; // 标签列表
+}
+
+// 搜索标签的请求
+message SearchTagRequest
+{
+    string keyword = 1; // 关键字
+    int64 offset = 2;   // 偏移值
+    int64 count = 3;    // 数量
+}
+
+// 搜索标签的回复
+message SearchTagResponse
+{
+    Status status = 1;          // 状态
+    int64 total = 2;            // 总数
+    repeated TagEntity tag = 3; // 标签列表
+}
+
+// 智能提示关键字的请求
+message SuggestKeywordRequest
+{
+    string keyword = 1; // 关键字
+}
+
+// 智能提示关键字的回复
+message SuggestKeywordResponse
+{
+    Status status = 1;           // 状态
+    repeated string keyword = 2; //  关键字列表
+}
+
+// 替换关键字的请求
+message ReplaceKeywordRequest
+{
+    string matchedValue = 1; // 要匹配的关键字
+    string newValue = 2;     // 要替换的关键字
+}
+
+// 扩展关键字的请求
+message ExtendKeywordRequest
+{
+    ExtendMode mode = 1;              // 模式
+    repeated string matchedValue = 2; // 要匹配的关键字
+    repeated string newValue = 3;     // 要添加的关键字
+}
+
+// 合并Json格式数据的请求
+message MergeJsonRequest
+{
+    string content = 1; // 内容
+}
