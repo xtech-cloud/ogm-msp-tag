@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+import "proto/tag/shared.proto";
+
+package tag;
+
+// 标签受体
+service Dummy
+{
+    // 添加标签
+    rpc AddTag(AddTagRequest) returns (BlankResponse) {}
+    // 删除标签
+    rpc RemoveTag(RemoveTagRequest) returns (BlankResponse) {}
+    // 检索标签
+    rpc FilterTag(FilterTagRequest) returns (FilterTagResponse) {}
+}
+
+// 添加标签的请求
+message AddTagRequest
+{
+    string code = 1;  // 编号
+    string owner = 2; // 受体
+}
+
+// 删除标签的请求
+message RemoveTagRequest
+{
+    string code = 1;  // 编号
+    string owner = 2; // 受体
+}
+
+// 检索标签的请求
+message FilterTagRequest
+{
+    int64 offset = 1;         // 偏移值
+    int64 count = 2;          // 数量
+    repeated string code = 3; // 标签列表
+}
+
+// 检索标签的回复
+message FilterTagResponse
+{
+    Status status = 1;         // 状态
+    int64 total = 2;           // 总数
+    repeated string owner = 3; // 受体列表
+}
+
