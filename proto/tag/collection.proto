@@ -8,29 +8,29 @@ package tag;
 service Collection
 {
     // 添加标签
-    rpc AddTag(AddTagRequest) returns (BlankResponse) {}
+    rpc AddTag(CollectionAddTagRequest) returns (BlankResponse) {}
     // 删除标签
-    rpc RemoveTag(RemoveTagRequest) returns (BlankResponse) {}
+    rpc RemoveTag(CollectionRemoveTagRequest) returns (BlankResponse) {}
     // 更新标签
-    rpc UpdateTag(UpdateTagRequest) returns (BlankResponse) {}
+    rpc UpdateTag(CollectionUpdateTagRequest) returns (BlankResponse) {}
     // 列举标签
-    rpc ListTag(ListTagRequest) returns (ListTagResponse) {}
+    rpc ListTag(CollectionListTagRequest) returns (CollectionListTagResponse) {}
     // 搜索标签
-    rpc SearchTag(SearchTagRequest) returns (SearchTagResponse) {}
+    rpc SearchTag(CollectionSearchTagRequest) returns (CollectionSearchTagResponse) {}
     // 智能提示关键字
-    rpc SuggestFilter(SuggestFilterRequest) returns (SuggestFilterResponse) {}
+    rpc SuggestFilter(CollectionSuggestFilterRequest) returns (CollectionSuggestFilterResponse) {}
     // 替换关键字
     // 为包含指定关键字的所有标签替换新的关键字
-    rpc ReplaceKeyword(ReplaceKeywordRequest) returns (BlankResponse) {}
+    rpc ReplaceKeyword(CollectionReplaceKeywordRequest) returns (BlankResponse) {}
     // 扩展关键字
     // 为包含指定关键字的所有标签追加新的关键字
-    rpc ExtendKeyword(ExtendKeywordRequest) returns (BlankResponse) {}
+    rpc ExtendKeyword(CollectionExtendKeywordRequest) returns (BlankResponse) {}
     // 合并Json格式数据
-    rpc MergeJson(MergeJsonRequest) returns (BlankResponse) {}
+    rpc MergeJson(CollectionMergeJsonRequest) returns (BlankResponse) {}
 }
 
 // 添加标签的请求
-message AddTagRequest
+message CollectionAddTagRequest
 {
     string code = 1;  // 编号
     string name = 2;  // 名称
@@ -39,13 +39,13 @@ message AddTagRequest
 }
 
 // 删除标签的请求
-message RemoveTagRequest
+message CollectionRemoveTagRequest
 {
     string code = 1; // 编号
 }
 
 // 更新标签的请求
-message UpdateTagRequest
+message CollectionUpdateTagRequest
 {
     string code = 1;               // 编号
     string name = 2;               // 标签名称
@@ -55,14 +55,14 @@ message UpdateTagRequest
 }
 
 // 列举标签的请求
-message ListTagRequest
+message CollectionListTagRequest
 {
     int64 offset = 1; // 偏移值
     int64 count = 2;  // 数量
 }
 
 // 列举标签的回复
-message ListTagResponse
+message CollectionListTagResponse
 {
     Status status = 1;          // 状态
     int64 total = 2;            // 总数
@@ -70,7 +70,7 @@ message ListTagResponse
 }
 
 // 搜索标签的请求
-message SearchTagRequest
+message CollectionSearchTagRequest
 {
     string filter = 1; // 过滤器
     int64 offset = 2;  // 偏移值
@@ -78,7 +78,7 @@ message SearchTagRequest
 }
 
 // 搜索标签的回复
-message SearchTagResponse
+message CollectionSearchTagResponse
 {
     Status status = 1;          // 状态
     int64 total = 2;            // 总数
@@ -86,27 +86,27 @@ message SearchTagResponse
 }
 
 // 智能提示关键字的请求
-message SuggestFilterRequest
+message CollectionSuggestFilterRequest
 {
     string input = 1; // 输入
 }
 
 // 智能提示过滤器的回复
-message SuggestFilterResponse
+message CollectionSuggestFilterResponse
 {
     Status status = 1;          // 状态
     repeated string filter = 2; //  过滤器列表
 }
 
 // 替换关键字的请求
-message ReplaceKeywordRequest
+message CollectionReplaceKeywordRequest
 {
     string matchedValue = 1; // 要匹配的关键字
     string newValue = 2;     // 要替换的关键字
 }
 
 // 扩展关键字的请求
-message ExtendKeywordRequest
+message CollectionExtendKeywordRequest
 {
     ExtendMode mode = 1;              // 模式
     repeated string matchedValue = 2; // 要匹配的关键字
@@ -114,7 +114,7 @@ message ExtendKeywordRequest
 }
 
 // 合并Json格式数据的请求
-message MergeJsonRequest
+message CollectionMergeJsonRequest
 {
     string content = 1; // 内容
 }

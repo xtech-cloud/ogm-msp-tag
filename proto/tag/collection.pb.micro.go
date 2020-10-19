@@ -35,25 +35,25 @@ var _ server.Option
 
 type CollectionService interface {
 	// 添加标签
-	AddTag(ctx context.Context, in *AddTagRequest, opts ...client.CallOption) (*BlankResponse, error)
+	AddTag(ctx context.Context, in *CollectionAddTagRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 删除标签
-	RemoveTag(ctx context.Context, in *RemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error)
+	RemoveTag(ctx context.Context, in *CollectionRemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 更新标签
-	UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...client.CallOption) (*BlankResponse, error)
+	UpdateTag(ctx context.Context, in *CollectionUpdateTagRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 列举标签
-	ListTag(ctx context.Context, in *ListTagRequest, opts ...client.CallOption) (*ListTagResponse, error)
+	ListTag(ctx context.Context, in *CollectionListTagRequest, opts ...client.CallOption) (*CollectionListTagResponse, error)
 	// 搜索标签
-	SearchTag(ctx context.Context, in *SearchTagRequest, opts ...client.CallOption) (*SearchTagResponse, error)
+	SearchTag(ctx context.Context, in *CollectionSearchTagRequest, opts ...client.CallOption) (*CollectionSearchTagResponse, error)
 	// 智能提示关键字
-	SuggestFilter(ctx context.Context, in *SuggestFilterRequest, opts ...client.CallOption) (*SuggestFilterResponse, error)
+	SuggestFilter(ctx context.Context, in *CollectionSuggestFilterRequest, opts ...client.CallOption) (*CollectionSuggestFilterResponse, error)
 	// 替换关键字
 	// 为包含指定关键字的所有标签替换新的关键字
-	ReplaceKeyword(ctx context.Context, in *ReplaceKeywordRequest, opts ...client.CallOption) (*BlankResponse, error)
+	ReplaceKeyword(ctx context.Context, in *CollectionReplaceKeywordRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 扩展关键字
 	// 为包含指定关键字的所有标签追加新的关键字
-	ExtendKeyword(ctx context.Context, in *ExtendKeywordRequest, opts ...client.CallOption) (*BlankResponse, error)
+	ExtendKeyword(ctx context.Context, in *CollectionExtendKeywordRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 合并Json格式数据
-	MergeJson(ctx context.Context, in *MergeJsonRequest, opts ...client.CallOption) (*BlankResponse, error)
+	MergeJson(ctx context.Context, in *CollectionMergeJsonRequest, opts ...client.CallOption) (*BlankResponse, error)
 }
 
 type collectionService struct {
@@ -68,7 +68,7 @@ func NewCollectionService(name string, c client.Client) CollectionService {
 	}
 }
 
-func (c *collectionService) AddTag(ctx context.Context, in *AddTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *collectionService) AddTag(ctx context.Context, in *CollectionAddTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.AddTag", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -78,7 +78,7 @@ func (c *collectionService) AddTag(ctx context.Context, in *AddTagRequest, opts 
 	return out, nil
 }
 
-func (c *collectionService) RemoveTag(ctx context.Context, in *RemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *collectionService) RemoveTag(ctx context.Context, in *CollectionRemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.RemoveTag", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -88,7 +88,7 @@ func (c *collectionService) RemoveTag(ctx context.Context, in *RemoveTagRequest,
 	return out, nil
 }
 
-func (c *collectionService) UpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *collectionService) UpdateTag(ctx context.Context, in *CollectionUpdateTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.UpdateTag", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -98,9 +98,9 @@ func (c *collectionService) UpdateTag(ctx context.Context, in *UpdateTagRequest,
 	return out, nil
 }
 
-func (c *collectionService) ListTag(ctx context.Context, in *ListTagRequest, opts ...client.CallOption) (*ListTagResponse, error) {
+func (c *collectionService) ListTag(ctx context.Context, in *CollectionListTagRequest, opts ...client.CallOption) (*CollectionListTagResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.ListTag", in)
-	out := new(ListTagResponse)
+	out := new(CollectionListTagResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -108,9 +108,9 @@ func (c *collectionService) ListTag(ctx context.Context, in *ListTagRequest, opt
 	return out, nil
 }
 
-func (c *collectionService) SearchTag(ctx context.Context, in *SearchTagRequest, opts ...client.CallOption) (*SearchTagResponse, error) {
+func (c *collectionService) SearchTag(ctx context.Context, in *CollectionSearchTagRequest, opts ...client.CallOption) (*CollectionSearchTagResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.SearchTag", in)
-	out := new(SearchTagResponse)
+	out := new(CollectionSearchTagResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -118,9 +118,9 @@ func (c *collectionService) SearchTag(ctx context.Context, in *SearchTagRequest,
 	return out, nil
 }
 
-func (c *collectionService) SuggestFilter(ctx context.Context, in *SuggestFilterRequest, opts ...client.CallOption) (*SuggestFilterResponse, error) {
+func (c *collectionService) SuggestFilter(ctx context.Context, in *CollectionSuggestFilterRequest, opts ...client.CallOption) (*CollectionSuggestFilterResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.SuggestFilter", in)
-	out := new(SuggestFilterResponse)
+	out := new(CollectionSuggestFilterResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -128,7 +128,7 @@ func (c *collectionService) SuggestFilter(ctx context.Context, in *SuggestFilter
 	return out, nil
 }
 
-func (c *collectionService) ReplaceKeyword(ctx context.Context, in *ReplaceKeywordRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *collectionService) ReplaceKeyword(ctx context.Context, in *CollectionReplaceKeywordRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.ReplaceKeyword", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -138,7 +138,7 @@ func (c *collectionService) ReplaceKeyword(ctx context.Context, in *ReplaceKeywo
 	return out, nil
 }
 
-func (c *collectionService) ExtendKeyword(ctx context.Context, in *ExtendKeywordRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *collectionService) ExtendKeyword(ctx context.Context, in *CollectionExtendKeywordRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.ExtendKeyword", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -148,7 +148,7 @@ func (c *collectionService) ExtendKeyword(ctx context.Context, in *ExtendKeyword
 	return out, nil
 }
 
-func (c *collectionService) MergeJson(ctx context.Context, in *MergeJsonRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *collectionService) MergeJson(ctx context.Context, in *CollectionMergeJsonRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Collection.MergeJson", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -162,38 +162,38 @@ func (c *collectionService) MergeJson(ctx context.Context, in *MergeJsonRequest,
 
 type CollectionHandler interface {
 	// 添加标签
-	AddTag(context.Context, *AddTagRequest, *BlankResponse) error
+	AddTag(context.Context, *CollectionAddTagRequest, *BlankResponse) error
 	// 删除标签
-	RemoveTag(context.Context, *RemoveTagRequest, *BlankResponse) error
+	RemoveTag(context.Context, *CollectionRemoveTagRequest, *BlankResponse) error
 	// 更新标签
-	UpdateTag(context.Context, *UpdateTagRequest, *BlankResponse) error
+	UpdateTag(context.Context, *CollectionUpdateTagRequest, *BlankResponse) error
 	// 列举标签
-	ListTag(context.Context, *ListTagRequest, *ListTagResponse) error
+	ListTag(context.Context, *CollectionListTagRequest, *CollectionListTagResponse) error
 	// 搜索标签
-	SearchTag(context.Context, *SearchTagRequest, *SearchTagResponse) error
+	SearchTag(context.Context, *CollectionSearchTagRequest, *CollectionSearchTagResponse) error
 	// 智能提示关键字
-	SuggestFilter(context.Context, *SuggestFilterRequest, *SuggestFilterResponse) error
+	SuggestFilter(context.Context, *CollectionSuggestFilterRequest, *CollectionSuggestFilterResponse) error
 	// 替换关键字
 	// 为包含指定关键字的所有标签替换新的关键字
-	ReplaceKeyword(context.Context, *ReplaceKeywordRequest, *BlankResponse) error
+	ReplaceKeyword(context.Context, *CollectionReplaceKeywordRequest, *BlankResponse) error
 	// 扩展关键字
 	// 为包含指定关键字的所有标签追加新的关键字
-	ExtendKeyword(context.Context, *ExtendKeywordRequest, *BlankResponse) error
+	ExtendKeyword(context.Context, *CollectionExtendKeywordRequest, *BlankResponse) error
 	// 合并Json格式数据
-	MergeJson(context.Context, *MergeJsonRequest, *BlankResponse) error
+	MergeJson(context.Context, *CollectionMergeJsonRequest, *BlankResponse) error
 }
 
 func RegisterCollectionHandler(s server.Server, hdlr CollectionHandler, opts ...server.HandlerOption) error {
 	type collection interface {
-		AddTag(ctx context.Context, in *AddTagRequest, out *BlankResponse) error
-		RemoveTag(ctx context.Context, in *RemoveTagRequest, out *BlankResponse) error
-		UpdateTag(ctx context.Context, in *UpdateTagRequest, out *BlankResponse) error
-		ListTag(ctx context.Context, in *ListTagRequest, out *ListTagResponse) error
-		SearchTag(ctx context.Context, in *SearchTagRequest, out *SearchTagResponse) error
-		SuggestFilter(ctx context.Context, in *SuggestFilterRequest, out *SuggestFilterResponse) error
-		ReplaceKeyword(ctx context.Context, in *ReplaceKeywordRequest, out *BlankResponse) error
-		ExtendKeyword(ctx context.Context, in *ExtendKeywordRequest, out *BlankResponse) error
-		MergeJson(ctx context.Context, in *MergeJsonRequest, out *BlankResponse) error
+		AddTag(ctx context.Context, in *CollectionAddTagRequest, out *BlankResponse) error
+		RemoveTag(ctx context.Context, in *CollectionRemoveTagRequest, out *BlankResponse) error
+		UpdateTag(ctx context.Context, in *CollectionUpdateTagRequest, out *BlankResponse) error
+		ListTag(ctx context.Context, in *CollectionListTagRequest, out *CollectionListTagResponse) error
+		SearchTag(ctx context.Context, in *CollectionSearchTagRequest, out *CollectionSearchTagResponse) error
+		SuggestFilter(ctx context.Context, in *CollectionSuggestFilterRequest, out *CollectionSuggestFilterResponse) error
+		ReplaceKeyword(ctx context.Context, in *CollectionReplaceKeywordRequest, out *BlankResponse) error
+		ExtendKeyword(ctx context.Context, in *CollectionExtendKeywordRequest, out *BlankResponse) error
+		MergeJson(ctx context.Context, in *CollectionMergeJsonRequest, out *BlankResponse) error
 	}
 	type Collection struct {
 		collection
@@ -206,38 +206,38 @@ type collectionHandler struct {
 	CollectionHandler
 }
 
-func (h *collectionHandler) AddTag(ctx context.Context, in *AddTagRequest, out *BlankResponse) error {
+func (h *collectionHandler) AddTag(ctx context.Context, in *CollectionAddTagRequest, out *BlankResponse) error {
 	return h.CollectionHandler.AddTag(ctx, in, out)
 }
 
-func (h *collectionHandler) RemoveTag(ctx context.Context, in *RemoveTagRequest, out *BlankResponse) error {
+func (h *collectionHandler) RemoveTag(ctx context.Context, in *CollectionRemoveTagRequest, out *BlankResponse) error {
 	return h.CollectionHandler.RemoveTag(ctx, in, out)
 }
 
-func (h *collectionHandler) UpdateTag(ctx context.Context, in *UpdateTagRequest, out *BlankResponse) error {
+func (h *collectionHandler) UpdateTag(ctx context.Context, in *CollectionUpdateTagRequest, out *BlankResponse) error {
 	return h.CollectionHandler.UpdateTag(ctx, in, out)
 }
 
-func (h *collectionHandler) ListTag(ctx context.Context, in *ListTagRequest, out *ListTagResponse) error {
+func (h *collectionHandler) ListTag(ctx context.Context, in *CollectionListTagRequest, out *CollectionListTagResponse) error {
 	return h.CollectionHandler.ListTag(ctx, in, out)
 }
 
-func (h *collectionHandler) SearchTag(ctx context.Context, in *SearchTagRequest, out *SearchTagResponse) error {
+func (h *collectionHandler) SearchTag(ctx context.Context, in *CollectionSearchTagRequest, out *CollectionSearchTagResponse) error {
 	return h.CollectionHandler.SearchTag(ctx, in, out)
 }
 
-func (h *collectionHandler) SuggestFilter(ctx context.Context, in *SuggestFilterRequest, out *SuggestFilterResponse) error {
+func (h *collectionHandler) SuggestFilter(ctx context.Context, in *CollectionSuggestFilterRequest, out *CollectionSuggestFilterResponse) error {
 	return h.CollectionHandler.SuggestFilter(ctx, in, out)
 }
 
-func (h *collectionHandler) ReplaceKeyword(ctx context.Context, in *ReplaceKeywordRequest, out *BlankResponse) error {
+func (h *collectionHandler) ReplaceKeyword(ctx context.Context, in *CollectionReplaceKeywordRequest, out *BlankResponse) error {
 	return h.CollectionHandler.ReplaceKeyword(ctx, in, out)
 }
 
-func (h *collectionHandler) ExtendKeyword(ctx context.Context, in *ExtendKeywordRequest, out *BlankResponse) error {
+func (h *collectionHandler) ExtendKeyword(ctx context.Context, in *CollectionExtendKeywordRequest, out *BlankResponse) error {
 	return h.CollectionHandler.ExtendKeyword(ctx, in, out)
 }
 
-func (h *collectionHandler) MergeJson(ctx context.Context, in *MergeJsonRequest, out *BlankResponse) error {
+func (h *collectionHandler) MergeJson(ctx context.Context, in *CollectionMergeJsonRequest, out *BlankResponse) error {
 	return h.CollectionHandler.MergeJson(ctx, in, out)
 }

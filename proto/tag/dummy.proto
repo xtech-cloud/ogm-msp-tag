@@ -8,29 +8,29 @@ package tag;
 service Dummy
 {
     // 添加标签
-    rpc AddTag(AddTagRequest) returns (BlankResponse) {}
+    rpc AddTag(DummyAddTagRequest) returns (BlankResponse) {}
     // 删除标签
-    rpc RemoveTag(RemoveTagRequest) returns (BlankResponse) {}
+    rpc RemoveTag(DummyRemoveTagRequest) returns (BlankResponse) {}
     // 检索标签
-    rpc FilterTag(FilterTagRequest) returns (FilterTagResponse) {}
+    rpc FilterTag(DummyFilterTagRequest) returns (DummyFilterTagResponse) {}
 }
 
 // 添加标签的请求
-message AddTagRequest
+message DummyAddTagRequest
 {
     string code = 1;  // 编号
     string owner = 2; // 受体
 }
 
 // 删除标签的请求
-message RemoveTagRequest
+message DummyRemoveTagRequest
 {
     string code = 1;  // 编号
     string owner = 2; // 受体
 }
 
 // 检索标签的请求
-message FilterTagRequest
+message DummyFilterTagRequest
 {
     int64 offset = 1;         // 偏移值
     int64 count = 2;          // 数量
@@ -38,7 +38,7 @@ message FilterTagRequest
 }
 
 // 检索标签的回复
-message FilterTagResponse
+message DummyFilterTagResponse
 {
     Status status = 1;         // 状态
     int64 total = 2;           // 总数

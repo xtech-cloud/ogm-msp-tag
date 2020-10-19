@@ -21,7 +21,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // 添加标签的请求
-type AddTagRequest struct {
+type DummyAddTagRequest struct {
 	Code                 string   `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
 	Owner                string   `protobuf:"bytes,2,opt,name=owner,proto3" json:"owner,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -29,39 +29,39 @@ type AddTagRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *AddTagRequest) Reset()         { *m = AddTagRequest{} }
-func (m *AddTagRequest) String() string { return proto.CompactTextString(m) }
-func (*AddTagRequest) ProtoMessage()    {}
-func (*AddTagRequest) Descriptor() ([]byte, []int) {
+func (m *DummyAddTagRequest) Reset()         { *m = DummyAddTagRequest{} }
+func (m *DummyAddTagRequest) String() string { return proto.CompactTextString(m) }
+func (*DummyAddTagRequest) ProtoMessage()    {}
+func (*DummyAddTagRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0ab4a3ff9059ec40, []int{0}
 }
 
-func (m *AddTagRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AddTagRequest.Unmarshal(m, b)
+func (m *DummyAddTagRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DummyAddTagRequest.Unmarshal(m, b)
 }
-func (m *AddTagRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AddTagRequest.Marshal(b, m, deterministic)
+func (m *DummyAddTagRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DummyAddTagRequest.Marshal(b, m, deterministic)
 }
-func (m *AddTagRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AddTagRequest.Merge(m, src)
+func (m *DummyAddTagRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DummyAddTagRequest.Merge(m, src)
 }
-func (m *AddTagRequest) XXX_Size() int {
-	return xxx_messageInfo_AddTagRequest.Size(m)
+func (m *DummyAddTagRequest) XXX_Size() int {
+	return xxx_messageInfo_DummyAddTagRequest.Size(m)
 }
-func (m *AddTagRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_AddTagRequest.DiscardUnknown(m)
+func (m *DummyAddTagRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DummyAddTagRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_AddTagRequest proto.InternalMessageInfo
+var xxx_messageInfo_DummyAddTagRequest proto.InternalMessageInfo
 
-func (m *AddTagRequest) GetCode() string {
+func (m *DummyAddTagRequest) GetCode() string {
 	if m != nil {
 		return m.Code
 	}
 	return ""
 }
 
-func (m *AddTagRequest) GetOwner() string {
+func (m *DummyAddTagRequest) GetOwner() string {
 	if m != nil {
 		return m.Owner
 	}
@@ -69,7 +69,7 @@ func (m *AddTagRequest) GetOwner() string {
 }
 
 // 删除标签的请求
-type RemoveTagRequest struct {
+type DummyRemoveTagRequest struct {
 	Code                 string   `protobuf:"bytes,1,opt,name=code,proto3" json:"code,omitempty"`
 	Owner                string   `protobuf:"bytes,2,opt,name=owner,proto3" json:"owner,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -77,39 +77,39 @@ type RemoveTagRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *RemoveTagRequest) Reset()         { *m = RemoveTagRequest{} }
-func (m *RemoveTagRequest) String() string { return proto.CompactTextString(m) }
-func (*RemoveTagRequest) ProtoMessage()    {}
-func (*RemoveTagRequest) Descriptor() ([]byte, []int) {
+func (m *DummyRemoveTagRequest) Reset()         { *m = DummyRemoveTagRequest{} }
+func (m *DummyRemoveTagRequest) String() string { return proto.CompactTextString(m) }
+func (*DummyRemoveTagRequest) ProtoMessage()    {}
+func (*DummyRemoveTagRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0ab4a3ff9059ec40, []int{1}
 }
 
-func (m *RemoveTagRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RemoveTagRequest.Unmarshal(m, b)
+func (m *DummyRemoveTagRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DummyRemoveTagRequest.Unmarshal(m, b)
 }
-func (m *RemoveTagRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RemoveTagRequest.Marshal(b, m, deterministic)
+func (m *DummyRemoveTagRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DummyRemoveTagRequest.Marshal(b, m, deterministic)
 }
-func (m *RemoveTagRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RemoveTagRequest.Merge(m, src)
+func (m *DummyRemoveTagRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DummyRemoveTagRequest.Merge(m, src)
 }
-func (m *RemoveTagRequest) XXX_Size() int {
-	return xxx_messageInfo_RemoveTagRequest.Size(m)
+func (m *DummyRemoveTagRequest) XXX_Size() int {
+	return xxx_messageInfo_DummyRemoveTagRequest.Size(m)
 }
-func (m *RemoveTagRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_RemoveTagRequest.DiscardUnknown(m)
+func (m *DummyRemoveTagRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DummyRemoveTagRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_RemoveTagRequest proto.InternalMessageInfo
+var xxx_messageInfo_DummyRemoveTagRequest proto.InternalMessageInfo
 
-func (m *RemoveTagRequest) GetCode() string {
+func (m *DummyRemoveTagRequest) GetCode() string {
 	if m != nil {
 		return m.Code
 	}
 	return ""
 }
 
-func (m *RemoveTagRequest) GetOwner() string {
+func (m *DummyRemoveTagRequest) GetOwner() string {
 	if m != nil {
 		return m.Owner
 	}
@@ -117,7 +117,7 @@ func (m *RemoveTagRequest) GetOwner() string {
 }
 
 // 检索标签的请求
-type FilterTagRequest struct {
+type DummyFilterTagRequest struct {
 	Offset               int64    `protobuf:"varint,1,opt,name=offset,proto3" json:"offset,omitempty"`
 	Count                int64    `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	Code                 []string `protobuf:"bytes,3,rep,name=code,proto3" json:"code,omitempty"`
@@ -126,46 +126,46 @@ type FilterTagRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *FilterTagRequest) Reset()         { *m = FilterTagRequest{} }
-func (m *FilterTagRequest) String() string { return proto.CompactTextString(m) }
-func (*FilterTagRequest) ProtoMessage()    {}
-func (*FilterTagRequest) Descriptor() ([]byte, []int) {
+func (m *DummyFilterTagRequest) Reset()         { *m = DummyFilterTagRequest{} }
+func (m *DummyFilterTagRequest) String() string { return proto.CompactTextString(m) }
+func (*DummyFilterTagRequest) ProtoMessage()    {}
+func (*DummyFilterTagRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0ab4a3ff9059ec40, []int{2}
 }
 
-func (m *FilterTagRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FilterTagRequest.Unmarshal(m, b)
+func (m *DummyFilterTagRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DummyFilterTagRequest.Unmarshal(m, b)
 }
-func (m *FilterTagRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FilterTagRequest.Marshal(b, m, deterministic)
+func (m *DummyFilterTagRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DummyFilterTagRequest.Marshal(b, m, deterministic)
 }
-func (m *FilterTagRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FilterTagRequest.Merge(m, src)
+func (m *DummyFilterTagRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DummyFilterTagRequest.Merge(m, src)
 }
-func (m *FilterTagRequest) XXX_Size() int {
-	return xxx_messageInfo_FilterTagRequest.Size(m)
+func (m *DummyFilterTagRequest) XXX_Size() int {
+	return xxx_messageInfo_DummyFilterTagRequest.Size(m)
 }
-func (m *FilterTagRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_FilterTagRequest.DiscardUnknown(m)
+func (m *DummyFilterTagRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DummyFilterTagRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FilterTagRequest proto.InternalMessageInfo
+var xxx_messageInfo_DummyFilterTagRequest proto.InternalMessageInfo
 
-func (m *FilterTagRequest) GetOffset() int64 {
+func (m *DummyFilterTagRequest) GetOffset() int64 {
 	if m != nil {
 		return m.Offset
 	}
 	return 0
 }
 
-func (m *FilterTagRequest) GetCount() int64 {
+func (m *DummyFilterTagRequest) GetCount() int64 {
 	if m != nil {
 		return m.Count
 	}
 	return 0
 }
 
-func (m *FilterTagRequest) GetCode() []string {
+func (m *DummyFilterTagRequest) GetCode() []string {
 	if m != nil {
 		return m.Code
 	}
@@ -173,7 +173,7 @@ func (m *FilterTagRequest) GetCode() []string {
 }
 
 // 检索标签的回复
-type FilterTagResponse struct {
+type DummyFilterTagResponse struct {
 	Status               *Status  `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	Total                int64    `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 	Owner                []string `protobuf:"bytes,3,rep,name=owner,proto3" json:"owner,omitempty"`
@@ -182,46 +182,46 @@ type FilterTagResponse struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *FilterTagResponse) Reset()         { *m = FilterTagResponse{} }
-func (m *FilterTagResponse) String() string { return proto.CompactTextString(m) }
-func (*FilterTagResponse) ProtoMessage()    {}
-func (*FilterTagResponse) Descriptor() ([]byte, []int) {
+func (m *DummyFilterTagResponse) Reset()         { *m = DummyFilterTagResponse{} }
+func (m *DummyFilterTagResponse) String() string { return proto.CompactTextString(m) }
+func (*DummyFilterTagResponse) ProtoMessage()    {}
+func (*DummyFilterTagResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0ab4a3ff9059ec40, []int{3}
 }
 
-func (m *FilterTagResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FilterTagResponse.Unmarshal(m, b)
+func (m *DummyFilterTagResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DummyFilterTagResponse.Unmarshal(m, b)
 }
-func (m *FilterTagResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FilterTagResponse.Marshal(b, m, deterministic)
+func (m *DummyFilterTagResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DummyFilterTagResponse.Marshal(b, m, deterministic)
 }
-func (m *FilterTagResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FilterTagResponse.Merge(m, src)
+func (m *DummyFilterTagResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DummyFilterTagResponse.Merge(m, src)
 }
-func (m *FilterTagResponse) XXX_Size() int {
-	return xxx_messageInfo_FilterTagResponse.Size(m)
+func (m *DummyFilterTagResponse) XXX_Size() int {
+	return xxx_messageInfo_DummyFilterTagResponse.Size(m)
 }
-func (m *FilterTagResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_FilterTagResponse.DiscardUnknown(m)
+func (m *DummyFilterTagResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DummyFilterTagResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_FilterTagResponse proto.InternalMessageInfo
+var xxx_messageInfo_DummyFilterTagResponse proto.InternalMessageInfo
 
-func (m *FilterTagResponse) GetStatus() *Status {
+func (m *DummyFilterTagResponse) GetStatus() *Status {
 	if m != nil {
 		return m.Status
 	}
 	return nil
 }
 
-func (m *FilterTagResponse) GetTotal() int64 {
+func (m *DummyFilterTagResponse) GetTotal() int64 {
 	if m != nil {
 		return m.Total
 	}
 	return 0
 }
 
-func (m *FilterTagResponse) GetOwner() []string {
+func (m *DummyFilterTagResponse) GetOwner() []string {
 	if m != nil {
 		return m.Owner
 	}
@@ -229,10 +229,10 @@ func (m *FilterTagResponse) GetOwner() []string {
 }
 
 func init() {
-	proto.RegisterType((*AddTagRequest)(nil), "tag.AddTagRequest")
-	proto.RegisterType((*RemoveTagRequest)(nil), "tag.RemoveTagRequest")
-	proto.RegisterType((*FilterTagRequest)(nil), "tag.FilterTagRequest")
-	proto.RegisterType((*FilterTagResponse)(nil), "tag.FilterTagResponse")
+	proto.RegisterType((*DummyAddTagRequest)(nil), "tag.DummyAddTagRequest")
+	proto.RegisterType((*DummyRemoveTagRequest)(nil), "tag.DummyRemoveTagRequest")
+	proto.RegisterType((*DummyFilterTagRequest)(nil), "tag.DummyFilterTagRequest")
+	proto.RegisterType((*DummyFilterTagResponse)(nil), "tag.DummyFilterTagResponse")
 }
 
 func init() {
@@ -240,23 +240,23 @@ func init() {
 }
 
 var fileDescriptor_0ab4a3ff9059ec40 = []byte{
-	// 283 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x51, 0xc1, 0x4e, 0xeb, 0x30,
-	0x10, 0x7c, 0x79, 0xa1, 0x91, 0xb2, 0x15, 0x52, 0xb1, 0x68, 0x54, 0xe5, 0x54, 0x85, 0x0b, 0xa7,
-	0x54, 0x0a, 0x17, 0x90, 0x7a, 0x01, 0x21, 0x3e, 0xc0, 0xf4, 0x07, 0x4c, 0xbd, 0x0d, 0x88, 0x24,
-	0x2e, 0xf1, 0x06, 0xc4, 0x77, 0xf1, 0x83, 0x28, 0xeb, 0x24, 0x2d, 0x91, 0xb8, 0x70, 0xf3, 0xcc,
-	0x7a, 0x66, 0xd6, 0x63, 0x98, 0xef, 0x6b, 0x43, 0x66, 0x45, 0x2a, 0x5f, 0xe9, 0xa6, 0x2c, 0x3f,
-	0x53, 0xc6, 0xc2, 0x27, 0x95, 0xc7, 0xd1, 0x61, 0x66, 0x9f, 0x55, 0x8d, 0xda, 0x0d, 0x93, 0x1b,
-	0x38, 0xbd, 0xd5, 0x7a, 0xa3, 0x72, 0x89, 0x6f, 0x0d, 0x5a, 0x12, 0x02, 0x4e, 0xb6, 0x46, 0xe3,
-	0xc2, 0x5b, 0x7a, 0x97, 0xa1, 0xe4, 0xb3, 0x38, 0x87, 0x89, 0xf9, 0xa8, 0xb0, 0x5e, 0xfc, 0x67,
-	0xd2, 0x81, 0x64, 0x0d, 0x33, 0x89, 0xa5, 0x79, 0xc7, 0x3f, 0xa9, 0x37, 0x30, 0x7b, 0x78, 0x29,
-	0x08, 0xeb, 0x23, 0x75, 0x04, 0x81, 0xd9, 0xed, 0x2c, 0x12, 0xeb, 0x7d, 0xd9, 0xa1, 0xd6, 0x61,
-	0x6b, 0x9a, 0x8a, 0xd8, 0xc1, 0x97, 0x0e, 0x0c, 0x59, 0xfe, 0xd2, 0xef, 0xb3, 0x12, 0x0d, 0x67,
-	0x47, 0xae, 0x76, 0x6f, 0x2a, 0x8b, 0xe2, 0x02, 0x02, 0x4b, 0x8a, 0x1a, 0xcb, 0xb6, 0xd3, 0x6c,
-	0x9a, 0x92, 0xca, 0xd3, 0x47, 0xa6, 0x64, 0x37, 0x6a, 0x33, 0xc8, 0x90, 0x2a, 0xfa, 0x0c, 0x06,
-	0x87, 0xdd, 0x5d, 0x88, 0x03, 0xd9, 0x97, 0x07, 0x93, 0xfb, 0xb6, 0x61, 0x91, 0x41, 0xe0, 0xea,
-	0x13, 0x82, 0x4d, 0x7f, 0x74, 0x19, 0x3b, 0xee, 0xae, 0x50, 0xd5, 0x6b, 0xbf, 0x4c, 0xf2, 0x4f,
-	0x5c, 0x43, 0x38, 0xf4, 0x26, 0xe6, 0x7c, 0x65, 0xdc, 0xe3, 0x2f, 0xca, 0x35, 0x84, 0xc3, 0xeb,
-	0x3a, 0xe5, 0xb8, 0xc3, 0x38, 0x1a, 0xd3, 0xbd, 0xfa, 0x29, 0xe0, 0x1f, 0xbf, 0xfa, 0x0e, 0x00,
-	0x00, 0xff, 0xff, 0xc5, 0xeb, 0xc8, 0x5e, 0x27, 0x02, 0x00, 0x00,
+	// 287 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0x4f, 0x4f, 0x83, 0x40,
+	0x14, 0xc4, 0xad, 0x58, 0x12, 0x5e, 0x6f, 0x2f, 0x16, 0x1b, 0xbc, 0x34, 0x78, 0xf1, 0x44, 0x93,
+	0x7a, 0xf0, 0xa4, 0x49, 0x8d, 0xe9, 0x07, 0x58, 0xbd, 0x78, 0x5c, 0xbb, 0x5b, 0x6c, 0x04, 0xb6,
+	0xb2, 0x0f, 0x8d, 0x9f, 0xd0, 0xaf, 0x65, 0x78, 0xcb, 0x9f, 0x06, 0xf5, 0xe2, 0x8d, 0xd9, 0x61,
+	0x7e, 0xc3, 0x4e, 0x80, 0xe9, 0xbe, 0x34, 0x64, 0x16, 0x24, 0xd3, 0x85, 0xaa, 0xf2, 0xfc, 0x33,
+	0x61, 0x8d, 0x1e, 0xc9, 0x34, 0x0a, 0x7b, 0xcf, 0xbe, 0xc8, 0x52, 0x2b, 0x67, 0xc6, 0xb7, 0x80,
+	0xf7, 0xf5, 0xbb, 0x2b, 0xa5, 0x1e, 0x65, 0x2a, 0xf4, 0x5b, 0xa5, 0x2d, 0x21, 0xc2, 0xc9, 0xc6,
+	0x28, 0x3d, 0x1b, 0xcd, 0x47, 0x97, 0x81, 0xe0, 0x67, 0x3c, 0x85, 0xb1, 0xf9, 0x28, 0x74, 0x39,
+	0x3b, 0xe6, 0x43, 0x27, 0xe2, 0x15, 0x4c, 0x39, 0x2f, 0x74, 0x6e, 0xde, 0xf5, 0xbf, 0x10, 0x4f,
+	0x0d, 0x62, 0xbd, 0xcb, 0x48, 0x97, 0x07, 0x88, 0x10, 0x7c, 0xb3, 0xdd, 0x5a, 0x4d, 0x0c, 0xf1,
+	0x44, 0xa3, 0x6a, 0xcc, 0xc6, 0x54, 0x05, 0x31, 0xc6, 0x13, 0x4e, 0x74, 0x85, 0xde, 0xdc, 0x6b,
+	0x0b, 0xe3, 0x1d, 0x84, 0x43, 0xb4, 0xdd, 0x9b, 0xc2, 0x6a, 0xbc, 0x00, 0xdf, 0x92, 0xa4, 0xca,
+	0x32, 0x7b, 0xb2, 0x9c, 0x24, 0x24, 0xd3, 0xe4, 0x81, 0x8f, 0x44, 0x63, 0xd5, 0x45, 0x64, 0x48,
+	0x66, 0x6d, 0x11, 0x8b, 0xfe, 0x16, 0xae, 0xc9, 0x89, 0xe5, 0xd7, 0x08, 0xc6, 0xdc, 0x85, 0xd7,
+	0xe0, 0xbb, 0x35, 0xf1, 0x8c, 0xa1, 0x3f, 0xf7, 0x8d, 0x90, 0x8d, 0xbb, 0x4c, 0x16, 0xaf, 0xed,
+	0x17, 0xc5, 0x47, 0x78, 0x03, 0x41, 0x37, 0x23, 0x46, 0x7d, 0x76, 0xb8, 0xed, 0x1f, 0xf1, 0x35,
+	0x04, 0xdd, 0x3d, 0x0f, 0xe3, 0xc3, 0x5d, 0xa3, 0xf3, 0x5f, 0xbd, 0x96, 0xf3, 0xec, 0xf3, 0x9f,
+	0x71, 0xf5, 0x1d, 0x00, 0x00, 0xff, 0xff, 0x8a, 0xc1, 0xdb, 0xd8, 0x4f, 0x02, 0x00, 0x00,
 }

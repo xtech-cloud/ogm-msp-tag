@@ -35,11 +35,11 @@ var _ server.Option
 
 type DummyService interface {
 	// 添加标签
-	AddTag(ctx context.Context, in *AddTagRequest, opts ...client.CallOption) (*BlankResponse, error)
+	AddTag(ctx context.Context, in *DummyAddTagRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 删除标签
-	RemoveTag(ctx context.Context, in *RemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error)
+	RemoveTag(ctx context.Context, in *DummyRemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 检索标签
-	FilterTag(ctx context.Context, in *FilterTagRequest, opts ...client.CallOption) (*FilterTagResponse, error)
+	FilterTag(ctx context.Context, in *DummyFilterTagRequest, opts ...client.CallOption) (*DummyFilterTagResponse, error)
 }
 
 type dummyService struct {
@@ -54,7 +54,7 @@ func NewDummyService(name string, c client.Client) DummyService {
 	}
 }
 
-func (c *dummyService) AddTag(ctx context.Context, in *AddTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *dummyService) AddTag(ctx context.Context, in *DummyAddTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Dummy.AddTag", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -64,7 +64,7 @@ func (c *dummyService) AddTag(ctx context.Context, in *AddTagRequest, opts ...cl
 	return out, nil
 }
 
-func (c *dummyService) RemoveTag(ctx context.Context, in *RemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
+func (c *dummyService) RemoveTag(ctx context.Context, in *DummyRemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error) {
 	req := c.c.NewRequest(c.name, "Dummy.RemoveTag", in)
 	out := new(BlankResponse)
 	err := c.c.Call(ctx, req, out, opts...)
@@ -74,9 +74,9 @@ func (c *dummyService) RemoveTag(ctx context.Context, in *RemoveTagRequest, opts
 	return out, nil
 }
 
-func (c *dummyService) FilterTag(ctx context.Context, in *FilterTagRequest, opts ...client.CallOption) (*FilterTagResponse, error) {
+func (c *dummyService) FilterTag(ctx context.Context, in *DummyFilterTagRequest, opts ...client.CallOption) (*DummyFilterTagResponse, error) {
 	req := c.c.NewRequest(c.name, "Dummy.FilterTag", in)
-	out := new(FilterTagResponse)
+	out := new(DummyFilterTagResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -88,18 +88,18 @@ func (c *dummyService) FilterTag(ctx context.Context, in *FilterTagRequest, opts
 
 type DummyHandler interface {
 	// 添加标签
-	AddTag(context.Context, *AddTagRequest, *BlankResponse) error
+	AddTag(context.Context, *DummyAddTagRequest, *BlankResponse) error
 	// 删除标签
-	RemoveTag(context.Context, *RemoveTagRequest, *BlankResponse) error
+	RemoveTag(context.Context, *DummyRemoveTagRequest, *BlankResponse) error
 	// 检索标签
-	FilterTag(context.Context, *FilterTagRequest, *FilterTagResponse) error
+	FilterTag(context.Context, *DummyFilterTagRequest, *DummyFilterTagResponse) error
 }
 
 func RegisterDummyHandler(s server.Server, hdlr DummyHandler, opts ...server.HandlerOption) error {
 	type dummy interface {
-		AddTag(ctx context.Context, in *AddTagRequest, out *BlankResponse) error
-		RemoveTag(ctx context.Context, in *RemoveTagRequest, out *BlankResponse) error
-		FilterTag(ctx context.Context, in *FilterTagRequest, out *FilterTagResponse) error
+		AddTag(ctx context.Context, in *DummyAddTagRequest, out *BlankResponse) error
+		RemoveTag(ctx context.Context, in *DummyRemoveTagRequest, out *BlankResponse) error
+		FilterTag(ctx context.Context, in *DummyFilterTagRequest, out *DummyFilterTagResponse) error
 	}
 	type Dummy struct {
 		dummy
@@ -112,14 +112,14 @@ type dummyHandler struct {
 	DummyHandler
 }
 
-func (h *dummyHandler) AddTag(ctx context.Context, in *AddTagRequest, out *BlankResponse) error {
+func (h *dummyHandler) AddTag(ctx context.Context, in *DummyAddTagRequest, out *BlankResponse) error {
 	return h.DummyHandler.AddTag(ctx, in, out)
 }
 
-func (h *dummyHandler) RemoveTag(ctx context.Context, in *RemoveTagRequest, out *BlankResponse) error {
+func (h *dummyHandler) RemoveTag(ctx context.Context, in *DummyRemoveTagRequest, out *BlankResponse) error {
 	return h.DummyHandler.RemoveTag(ctx, in, out)
 }
 
-func (h *dummyHandler) FilterTag(ctx context.Context, in *FilterTagRequest, out *FilterTagResponse) error {
+func (h *dummyHandler) FilterTag(ctx context.Context, in *DummyFilterTagRequest, out *DummyFilterTagResponse) error {
 	return h.DummyHandler.FilterTag(ctx, in, out)
 }
