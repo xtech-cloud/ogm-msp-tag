@@ -12,7 +12,11 @@ service Dummy
     // 删除标签
     rpc RemoveTag(DummyRemoveTagRequest) returns (BlankResponse) {}
     // 检索标签
+    // 使用便签列表检索受体
     rpc FilterTag(DummyFilterTagRequest) returns (DummyFilterTagResponse) {}
+    // 列举标签
+    // 获取受体的标签列表
+    rpc ListTag(DummyListTagRequest) returns (DummyListTagResponse) {}
 }
 
 // 添加标签的请求
@@ -45,3 +49,18 @@ message DummyFilterTagResponse
     repeated string owner = 3; // 受体列表
 }
 
+// 列举标签的请求
+message DummyListTagRequest
+{
+    int64 offset = 1; // 偏移值
+    int64 count = 2;  // 数量
+    string owner = 3; // 受体
+}
+
+// 列举标签的回复
+message DummyListTagResponse
+{
+    Status status = 1;    // 状态
+    int64 total = 2;      // 总数
+    repeated TagEntity tag = 3; // 标签列表
+}

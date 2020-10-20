@@ -39,7 +39,11 @@ type DummyService interface {
 	// 删除标签
 	RemoveTag(ctx context.Context, in *DummyRemoveTagRequest, opts ...client.CallOption) (*BlankResponse, error)
 	// 检索标签
+	// 使用便签列表检索受体
 	FilterTag(ctx context.Context, in *DummyFilterTagRequest, opts ...client.CallOption) (*DummyFilterTagResponse, error)
+	// 列举标签
+	// 获取受体的标签列表
+	ListTag(ctx context.Context, in *DummyListTagRequest, opts ...client.CallOption) (*DummyListTagResponse, error)
 }
 
 type dummyService struct {
@@ -84,6 +88,16 @@ func (c *dummyService) FilterTag(ctx context.Context, in *DummyFilterTagRequest,
 	return out, nil
 }
 
+func (c *dummyService) ListTag(ctx context.Context, in *DummyListTagRequest, opts ...client.CallOption) (*DummyListTagResponse, error) {
+	req := c.c.NewRequest(c.name, "Dummy.ListTag", in)
+	out := new(DummyListTagResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // Server API for Dummy service
 
 type DummyHandler interface {
@@ -92,7 +106,11 @@ type DummyHandler interface {
 	// 删除标签
 	RemoveTag(context.Context, *DummyRemoveTagRequest, *BlankResponse) error
 	// 检索标签
+	// 使用便签列表检索受体
 	FilterTag(context.Context, *DummyFilterTagRequest, *DummyFilterTagResponse) error
+	// 列举标签
+	// 获取受体的标签列表
+	ListTag(context.Context, *DummyListTagRequest, *DummyListTagResponse) error
 }
 
 func RegisterDummyHandler(s server.Server, hdlr DummyHandler, opts ...server.HandlerOption) error {
@@ -100,6 +118,7 @@ func RegisterDummyHandler(s server.Server, hdlr DummyHandler, opts ...server.Han
 		AddTag(ctx context.Context, in *DummyAddTagRequest, out *BlankResponse) error
 		RemoveTag(ctx context.Context, in *DummyRemoveTagRequest, out *BlankResponse) error
 		FilterTag(ctx context.Context, in *DummyFilterTagRequest, out *DummyFilterTagResponse) error
+		ListTag(ctx context.Context, in *DummyListTagRequest, out *DummyListTagResponse) error
 	}
 	type Dummy struct {
 		dummy
@@ -122,4 +141,8 @@ func (h *dummyHandler) RemoveTag(ctx context.Context, in *DummyRemoveTagRequest,
 
 func (h *dummyHandler) FilterTag(ctx context.Context, in *DummyFilterTagRequest, out *DummyFilterTagResponse) error {
 	return h.DummyHandler.FilterTag(ctx, in, out)
+}
+
+func (h *dummyHandler) ListTag(ctx context.Context, in *DummyListTagRequest, out *DummyListTagResponse) error {
+	return h.DummyHandler.ListTag(ctx, in, out)
 }
